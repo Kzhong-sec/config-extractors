@@ -11,11 +11,9 @@ def main():
     pe = pefile.PE(fpath)
     for rsrc in pe.DIRECTORY_ENTRY_RESOURCE.entries:
         for entry in rsrc.directory.entries:
-            # Extract the offset and size of the resource data
             offset = entry.directory.entries[0].data.struct.OffsetToData
             size = entry.directory.entries[0].data.struct.Size
             
-            # Get the raw data of the resource using pe.get_data()
             resource_data = pe.get_data(offset, size)
 
             enc_executable = resource_data[28:]
@@ -25,3 +23,5 @@ def main():
             print(decPayload[:2])
             with open("DecryptedPayload.bin", "wb") as payload:
                 payload.write(decPayload)
+
+main()
