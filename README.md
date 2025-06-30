@@ -1,6 +1,6 @@
 # Config Extractors
 
-Configuration extractors for samples I developed. See the output when run against samples below:
+Configuration extractors samples I analyzed. See the output when run against samples below:
 
 ![Emotet Extractor Output](screenshots/emotet-extractor-output.png)  
 
