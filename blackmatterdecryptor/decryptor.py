@@ -133,7 +133,7 @@ class BlackMatterDecryptor():
             'Kill services within config services hashes' : self.decrypted_main_config[168],
             'Load worker executable for secure self erase' : self.decrypted_main_config[169],
             'Deploy ransom notes on printer' : self.decrypted_main_config[170],
-            'unk6' : self.decrypted_main_config[171],
+            'Create ransom wallpaper' : self.decrypted_main_config[171],
             'Set BlackMatter default icon' : self.decrypted_main_config[172],
             'Contact C2' : self.decrypted_main_config[173],
             'Load worker executable for secure self erase' : self.decrypted_main_config[174],
@@ -264,10 +264,3 @@ class BlackMatterDecryptor():
             chunks.append(''.join(current))
         strings_list = [s for s in chunks[0].split('\x00') if s]
         return strings_list
-        
-
-
-if __name__ == "__main__":
-    fpath = r"C:\Users\Kevin\Desktop\Samples\Blackmatter\374f9df39b92ccccae8a9b747e606aebe0ddaf117f8f6450052efb5160c99368\374f9df39b92ccccae8a9b747e606aebe0ddaf117f8f6450052efb5160c99368.bin"
-    bm = BlackMatterDecryptor(fpath)
-    bm.decrypt_config()
