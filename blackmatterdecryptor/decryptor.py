@@ -17,13 +17,7 @@ class BlackMatterDecryptor():
        - The first 8 bytes of the pdata section are used as the key.
        - The bytes following that are used as the config data.
        - Simply call `decrypt_config()` then `extract_all()` after creating an instance.
-        Example usage:
-            from blackmatterdecryptor import BlackMatterDecryptor
-            fpath = fpath
-            bm = BlackMatterDecryptor(fpath)
-            bm.decrypt_config()
-            bm.extract_all()
-       
+
     2. Manual key & config supply:
        - Pass `key` and `config_va` in the constructor if the config is stored differently.
        - Then call `decrypt_config()`.
@@ -53,7 +47,7 @@ class BlackMatterDecryptor():
         self.conflig_flags = None
 
         #char *enc[in, out - encrypts in place] , int32 size_in_bytes, char* key_buffer
-        #in the actual assembly, the keybuffer is hardcoded into the function, I modified it a bit so you could pass it in as an arguement
+        #in the actual assembly, the keybuffer is hardcoded into the function, I modified it a bit so you could pass it in as an argument
         script_dir = os.path.dirname(os.path.realpath(__file__))
         dll_path = os.path.join(script_dir, "decrypt.dll")
         bmatter_decrypt = ctypes.WinDLL(dll_path)
@@ -129,12 +123,12 @@ class BlackMatterDecryptor():
         #config_flags_offset = 160
         config_flags = {
             'unk1' : self.decrypted_main_config[160],
-            'unk2' : self.decrypted_main_config[161],
+            'Replace with random file name' : self.decrypted_main_config[161],
             'Find Domain Admins' : self.decrypted_main_config[162],
-            'unk3' : self.decrypted_main_config[163],
+            'Skip hidden files' : self.decrypted_main_config[163],
             'Check for Russian Keyboard Layout' : self.decrypted_main_config[164],
-            'unk4' : self.decrypted_main_config[165],
-            'unk5' : self.decrypted_main_config[166],
+            'Encrypt local files' : self.decrypted_main_config[165],
+            'Encrypt network shares' : self.decrypted_main_config[166],
             'Kill processes within config process hashes' : self.decrypted_main_config[167],
             'Kill services within config services hashes' : self.decrypted_main_config[168],
             'Load worker executable for secure self erase' : self.decrypted_main_config[169],
@@ -168,6 +162,7 @@ class BlackMatterDecryptor():
         
         configDwordOffset_b64Decoded = []
         for b64_idx in range(b64_conf_start, (b64_conf_start+array_of_b64_str_idx_size*4), 4):
+            print(b64_idx)
             offset = struct.unpack("<I", self.decrypted_main_config[b64_idx:b64_idx+4])[0]
             if offset:
                 offset += 184 # The indexes are at config base + 184
@@ -233,11 +228,7 @@ class BlackMatterDecryptor():
                    }
 
         self.b64_decoded = decoded        
-        return decoded
-    
-    
-
-    
+        return decoded    
 
     
     def extract_all(self):
