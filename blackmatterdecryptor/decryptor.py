@@ -162,7 +162,6 @@ class BlackMatterDecryptor():
         
         configDwordOffset_b64Decoded = []
         for b64_idx in range(b64_conf_start, (b64_conf_start+array_of_b64_str_idx_size*4), 4):
-            print(b64_idx)
             offset = struct.unpack("<I", self.decrypted_main_config[b64_idx:b64_idx+4])[0]
             if offset:
                 offset += 184 # The indexes are at config base + 184
