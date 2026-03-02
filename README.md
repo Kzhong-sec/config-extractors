@@ -20,3 +20,5 @@ Configuration extractors I developed. See the output when run against the sample
 ![Blowfish Extractor Output](screenshots/blowfish-extractor-output.png)  
 
 ![AlmondRAT String Decryptor Output](screenshots/AlmondRAT_StringDecryption_output.png)  
+
+![GodRAT Config Extractor Output](screenshots/GodRAT-extractor-output.png)  
