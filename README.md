@@ -22,3 +22,5 @@ Configuration extractors I developed. See the output when run against the sample
 ![AlmondRAT String Decryptor Output](screenshots/AlmondRAT_StringDecryption_output.png)  
 
 ![GodRAT Config Extractor Output](screenshots/GodRAT-extractor-output.png)  
+
+![RustyClaw String Decryptor Output](screenshots/RustyClaw_stringDec_output.png) 
